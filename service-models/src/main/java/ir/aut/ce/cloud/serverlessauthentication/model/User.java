@@ -4,10 +4,16 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
     @Column(name = "email")
@@ -19,10 +25,8 @@ public class User {
     String nationalId;
     @Column(name = "ip")
     String ip;
-    @Column(name = "image1")
-    String image1;
-    @Column(name = "image2")
-    String image2;
+    @Column(name = "imageKey")
+    String imageKey;
     @Column(name = "state")
     String state;
 }
