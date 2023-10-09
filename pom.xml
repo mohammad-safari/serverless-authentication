@@ -20,6 +20,7 @@
 	<modules>
 		<module>crust-service</module>
 		<module>core-service</module>
+		<module>service-models</module>
 	</modules>
 
 </project>
