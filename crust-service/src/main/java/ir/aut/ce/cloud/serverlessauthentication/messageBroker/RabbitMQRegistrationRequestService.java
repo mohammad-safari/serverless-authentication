@@ -2,29 +2,44 @@ package ir.aut.ce.cloud.serverlessauthentication.messageBroker;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import ir.aut.ce.cloud.serverlessauthentication.message.RegistrsationMessage;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Configuration
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class RabbitMQRegistrationRequestService {
 
     @Value("${queues.registration-request.name}")
-    private String RegistrationRequestQueueName;
+    private String registrationRequestQueueName;
     @Value("${queues.registration-request.durability}")
-    private Boolean RegistrationRequestQueueDurabilty;
-    private final RabbitTemplate rabbitTemplate;
+    private Boolean registrationRequestQueueDurabilty;
+    private RabbitTemplate rabbitTemplate;
 
     @Bean
+    public MessageConverter jsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+    
+    @Bean
     public Queue registrationRequestQueue() {
-        return new Queue(RegistrationRequestQueueName, RegistrationRequestQueueDurabilty);
+        return new Queue(registrationRequestQueueName, registrationRequestQueueDurabilty);
+    }
+
+    @Lazy
+    @Autowired
+    public void setRabbitTemplate(RabbitTemplate rabbitTemplate){
+        this.rabbitTemplate = rabbitTemplate; 
     }
 
     public void postRegitrsationRequestMessage(RegistrsationMessage message) {
-        rabbitTemplate.convertAndSend(RegistrationRequestQueueName, message);
+        rabbitTemplate.convertAndSend(registrationRequestQueueName, message);
     }
 }

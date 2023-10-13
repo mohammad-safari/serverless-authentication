@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServerlessAuthenticationApplication {
+public class ServerlessAuthenticationCoreApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServerlessAuthenticationApplication.class, args);
+		SpringApplication.run(ServerlessAuthenticationCoreApplication.class, args);
 	}
 
 }

@@ -8,7 +8,7 @@ import org.testcontainers.containers.RabbitMQContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @TestConfiguration(proxyBeanMethods = false)
-public class TestServerlessAuthenticationApplication {
+public class TestServerlessAuthenticationCoreApplication {
 
 	@Bean
 	@ServiceConnection
@@ -17,7 +17,7 @@ public class TestServerlessAuthenticationApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.from(ServerlessAuthenticationApplication::main).with(TestServerlessAuthenticationApplication.class).run(args);
+		SpringApplication.from(ServerlessAuthenticationCoreApplication::main).with(TestServerlessAuthenticationCoreApplication.class).run(args);
 	}
 
 }
