@@ -17,6 +17,10 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>com.mailgun</groupId>
+			<artifactId>mailgun-java</artifactId>
+		  </dependency>		
+		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
 		</dependency>

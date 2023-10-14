@@ -26,6 +26,11 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+			   <groupId>com.mailgun</groupId>
+			   <artifactId>mailgun-java</artifactId>
+			   <version>1.0.9</version>
+			 </dependency>			
+			<dependency>
 				<groupId>com.amazonaws</groupId>
 				<artifactId>aws-java-sdk</artifactId>
 				<version>1.11.133</version>
