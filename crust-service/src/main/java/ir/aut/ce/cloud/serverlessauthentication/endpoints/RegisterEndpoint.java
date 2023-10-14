@@ -71,8 +71,9 @@ public class RegisterEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public UserRegistrationResponse registerUser(UserRegistrationRequest request) {
-        var generatedUsername = generateUsernameByAdjectiveNoun(dictionary.get(NOUN_KEY),
-                dictionary.get(ADJECTIVE_KEY));
+        var history = userRepository.findByNationalId(request.nationalId());
+        var generatedUsername = history.isEmpty() ? generateUsernameByAdjectiveNoun(dictionary.get(NOUN_KEY),
+                dictionary.get(ADJECTIVE_KEY)) : history.getFirst().getUsername();
         var putResultList = putAllImages(request, generatedUsername);
         storeUserRegistrationData(request, generatedUsername);
         postRequestMessage(generatedUsername);
@@ -80,7 +81,7 @@ public class RegisterEndpoint {
     }
 
     private UserRegistrationResponse processRegistrationResponse() {
-        return new UserRegistrationResponse();
+        return new UserRegistrationResponse("REGISTRATION_REQUEST_WAS_SUCCESSFULL");
     }
 
     private void postRequestMessage(String username) {
