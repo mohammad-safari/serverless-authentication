@@ -116,7 +116,7 @@ public class RegisterEndpoint {
     private String generateUsernameByAdjectiveNoun(List<String> nouns, List<String> adjectives) {
         var rand = new Random();
         var nounsCopy = new ArrayList<>(nouns);
-        var adjectivesCopy = new ArrayList<>(nouns);
+        var adjectivesCopy = new ArrayList<>(adjectives);
         Collections.shuffle(nounsCopy);
         Collections.shuffle(adjectivesCopy);
         return new StringBuilder().append(adjectivesCopy.get(rand.nextInt(adjectivesCopy.size())))
