@@ -1,4 +1,5 @@
 FROM openjdk:21-jdk-oracle as builder
+LABEL stage=builder
 ARG PROJECT=crust-service
 # if build is intended to happen inside builder stage then source must be excluded in dockerignore file
 # RUN ./mvnw clean package -f ${PROJECT}/pom.xml

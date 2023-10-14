@@ -16,12 +16,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "users")
 public class User {
+    @Id
+    @Column(name = "username")
+    String username;
     @Column(name = "email")
     String email;
     @Column(name = "lastname")
     String lastname;
     @Column(name = "nationalId")
-    @Id
     String nationalId;
     @Column(name = "ip")
     String ip;
