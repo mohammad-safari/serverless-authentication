@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import ir.aut.ce.cloud.serverlessauthentication.mailService.MailService;
 import ir.aut.ce.cloud.serverlessauthentication.mailService.MessageTemplate;
@@ -38,6 +39,7 @@ public class QueuedRequestProcessor {
     public final RecognitionService recognitionService;
     public final S3ObjectStorageService storageService;
 
+    @Transactional
     @EventListener
     public void process(RegistrsationMessage message) {
         log.info("recieved request " + message.getRegistrationKey());
@@ -82,7 +84,7 @@ public class QueuedRequestProcessor {
         }
         onConfirm(target);
     }
-
+    
     private void onConfirm(User target) {
         target.setState("REGISTRATION_COMPLETED");
         userRepository.save(target);
