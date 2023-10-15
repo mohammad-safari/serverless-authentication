@@ -50,7 +50,7 @@ public class InquiryEndpoint {
             return new UserInquiryResponse("Registration Request Has Been Rejected", null);
         }
         if (target.getState().equals("REGISTRATION_COMPLETED")) {
-            return new UserInquiryResponse("Registration Request Is Still Pending", target.getUsername());
+            return new UserInquiryResponse("Registration Request Has Been Confirmed", target.getUsername());
         }
 
         throw new WebApplicationException(Status.NOT_IMPLEMENTED);
