@@ -1,4 +1,4 @@
-package ir.aut.ce.cloud.serverlessauthentication.dtos;
+package ir.aut.ce.cloud.serverlessauthentication.mailService;
 
 import java.util.List;
 

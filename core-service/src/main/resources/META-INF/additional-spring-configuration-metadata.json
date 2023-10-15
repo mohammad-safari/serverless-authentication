@@ -38,5 +38,15 @@
     "name": "rest.mail.mailgun.domain",
     "type": "java.lang.String",
     "description": "A description for 'rest.mail.mailgun.domain'"
+  },
+  {
+    "name": "recognition.image.imagga.api-key",
+    "type": "java.lang.String",
+    "description": "A description for 'recognition.image.imagga.api-key'"
+  },
+  {
+    "name": "recognition.image.imagga.api-secret",
+    "type": "java.lang.String",
+    "description": "A description for 'recognition.image.imagga.api-secret'"
   }
 ]}

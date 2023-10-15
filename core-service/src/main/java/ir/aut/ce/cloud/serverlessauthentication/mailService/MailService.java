@@ -1,4 +1,4 @@
-package ir.aut.ce.cloud.serverlessauthentication.service;
+package ir.aut.ce.cloud.serverlessauthentication.mailService;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -13,7 +13,6 @@ import com.mailgun.client.MailgunClient;
 import com.mailgun.model.message.Message;
 import com.mailgun.model.message.MessageResponse;
 
-import ir.aut.ce.cloud.serverlessauthentication.dtos.MessageTemplate;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
