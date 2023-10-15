@@ -71,7 +71,7 @@ public class RegisterEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public UserRegistrationResponse registerUser(UserRegistrationRequest request) {
-        var history = userRepository.findByNationalId(request.nationalId());
+        var history = userRepository.findByNationalId(encryption.encrypt(request.nationalId()));
         var generatedUsername = history.isEmpty() ? generateUsernameByAdjectiveNoun(dictionary.get(NOUN_KEY),
                 dictionary.get(ADJECTIVE_KEY)) : history.getFirst().getUsername();
         var putResultList = putAllImages(request, generatedUsername);
