@@ -1,4 +1,10 @@
-# as no build happens inside builder stage all source bu jar files are ingored
-*
-!core-service/target/*.jar
-!crust-service/target/*.jar
+# if build is going to happen in builder stage, local build outputs must just be ignored
+*.class
+*.jar
+target/
+!mvnw
+!.mvn/maven-wrapper.jar
+# if no build happens inside builder stage, all source but jar files are ingored
+# *
+# !core-service/target/*.jar
+# !crust-service/target/*.jar
